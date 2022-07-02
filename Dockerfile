@@ -15,4 +15,4 @@ FROM nginx
 COPY --from=builder /app/build /usr/share/nginx/html
 
 #build - docker build .
-#run - docker run -p 8080:80 (port 80 is default for nginx)
+#run - docker run -p 8080:80 <id> (port 80 is default for nginx)
