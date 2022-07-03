@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web: #host developer server
+    build: 
+      context: . #where we want all the files/folders to be pulled from (could be used for nested folders)
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "3000:3000"
+    volumes:
+      - home/node/app/node_modules #do not overwrite this directory
+      - .:/home/node/app #write everything from . to /home/node/app folder in container
+  test: #separate container to run tests
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - home/node/app/node_modules
+      - .:/home/node/app
+    command: ["npm", "run", "test"] #overwrite command to run tests instead of npm run start

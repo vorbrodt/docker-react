@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true vorbrodt/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-north-1
+  app: "docker-react" 
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-355767558195"
+  bucket_path: "docker-react"
+  on:
+    branch: master #do deploy when we push to master branch
+  access_key_id: $"Access key ID - AWS"
+  secret_access_key: $"Secret access key - AWS"
