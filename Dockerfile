@@ -9,6 +9,7 @@ CMD ["npm", "run", "build"]
 #run phase 
 #nginx image will start automatically with having to run some command on it
 FROM nginx
+EXPOSE 80
 #--from means copy something from a different phase
 #here we copy the directory /app/build from the builder phase to the /usr/share/nginx/html
 #/usr/share/nginx/html is standard directory for nginx
